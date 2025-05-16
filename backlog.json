@@ -1,0 +1,120 @@
+
+---
+
+## ✅ EPIC 1: Supabase Project Setup (00:00–00:10)
+
+### 🧠 User Story
+
+**As a developer**, I want a secure, ready Supabase project and local dev environment so I can build and test features without delay.
+
+### 📋 Tasks
+
+* [ ] Create new Supabase project via web dashboard
+* [ ] Generate and store API keys in `.env`
+* [ ] Run `supabase init` in local project
+* [ ] Set up GitHub repo and commit baseline
+
+---
+
+## 🛡️ EPIC 2: Schema & Enums (00:10–00:25)
+
+### 🧠 User Story
+
+**As a user**, I want my data (tasks, reminders, mood logs) to be structured relationally so I can organize my life efficiently.
+
+### 📋 Tasks
+
+* [ ] Create enums: `task_status`, `priority_level`, `mood_type`, etc.
+* [ ] Create tables: `users`, `tasks`, `reminders`, `events`, `task_categories`, `mood_logs`
+* [ ] Define FK constraints (e.g., `tasks.user_id → users.id`)
+* [ ] Use Supabase SQL editor or `schema.sql`
+
+> 🧠 Use Copilot prompt: “SQL schema for a Supabase task tracker with UUIDs and timestamped tables”
+
+---
+
+## 🔐 EPIC 3: Auth + RLS Setup (00:25–00:35)
+
+### 🧠 User Story
+
+**As a user**, I want to see only my own data so that my schedule and tasks are private.
+
+### 📋 Tasks
+
+* [ ] Enable Row Level Security (RLS) for all tables
+* [ ] Create policies for:
+
+  * [ ] `users`: self-only access
+  * [ ] `tasks`, `reminders`, `mood_logs`: user-restricted read/write
+* [ ] Link `auth.uid()` to `users.id`
+
+> 🔐 Use Copilot: “Supabase RLS policy so users can only access their own rows”
+
+---
+
+## 🔄 EPIC 4: API Layer (00:35–00:50)
+
+### 🧠 User Story
+
+**As a frontend client**, I want to fetch, create, and delete tasks and reminders from Supabase via an API.
+
+### 📋 Tasks
+
+* [ ] Scaffold `GET /api/tasks` to list tasks for current user
+* [ ] Scaffold `POST /api/tasks` to create a new task
+* [ ] (Optional) Add basic input validation (Zod/Yup)
+* [ ] Test endpoints in Postman or browser
+* [ ] (Optional) Add `/reminders` endpoints
+
+> ⚙️ Copilot Prompt: “Next.js API route to insert a task into Supabase for authenticated user”
+
+---
+
+## 📪 EPIC 5: Data Seeding & Test (00:50–00:55)
+
+### 🧠 User Story
+
+**As a developer**, I want sample tasks and reminders so I can test features and UI quickly.
+
+### 📋 Tasks
+
+* [ ] Insert 3 fake users
+* [ ] Add 5 tasks with mixed due dates and priorities
+* [ ] Add at least 2 reminders
+* [ ] Confirm task filtering by `auth.uid()` works
+
+> 🧪 Copilot Prompt: “SQL inserts for 3 users and related tasks using current\_timestamp”
+
+---
+
+## 🌱 EPIC 6: Optional Frontend UI Bootstrap (00:55–01:00)
+
+### 🧠 User Story
+
+**As a user**, I want a clean UI to create and view tasks to test the data flow end-to-end.
+
+### 📋 Tasks
+
+* [ ] Build a minimal React or Next.js form with:
+
+  * [ ] Input: title, priority, due date
+  * [ ] Supabase insert function
+* [ ] List tasks using `supabase.from('tasks').select(...)`
+* [ ] (Optional) Style with Tailwind
+
+> 🎨 Copilot Prompt: “React + Supabase form to add task with title and due date”
+
+---
+
+## 📆 Backlog Summary Table
+
+| Epic | Description               | ETA    |
+| ---- | ------------------------- | ------ |
+| 1    | Supabase project + `.env` | 10 min |
+| 2    | Schema + enums            | 15 min |
+| 3    | Auth + RLS                | 10 min |
+| 4    | API endpoints             | 15 min |
+| 5    | Test data                 | 5 min  |
+| 6    | UI preview (optional)     | 5 min  |
+
+---
